@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1= title
+  a(class="btn btn-link", href="/", role="button") Voltar
+  ul
+  each article in articles
+    +details-article(article.author, article.title, article.description, article.url, article.urlToImage, new Date(article.publishedAt).toLocaleDateString())

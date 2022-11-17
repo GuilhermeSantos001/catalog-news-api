@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  form(action='/news/filter' method="GET")
+   div(class="form-group")
+    label(for="inputQuery") Filtro de pesquisa
+    input(name="query" type="text" class="form-control" id="inputQuery" aria-describedby="queryHelp" placeholder="Digite um assunto")
+    small(id="queryHelp" class="form-text text-muted") Escreva por exemplo: Javascript
+   button(type="submit" class="btn btn-link") Pesquisar
+  ul
+  each article in articles
+    +list-articles(article.author, article.title, article.description, article.url, new Date(article.publishedAt).toLocaleDateString())
